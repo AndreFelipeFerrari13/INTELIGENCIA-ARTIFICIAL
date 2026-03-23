@@ -1,0 +1,129 @@
+1) Importância da Preparação
+
+Preparar os dados é muito importante porque, se eles estiverem bagunçados, com erros ou faltando informações, o modelo pode aprender errado ou não aprender direito. Mesmo usando um algoritmo bom, se os dados não estiverem bons, o resultado vai ser ruim. Por isso, arrumar e organizar os dados geralmente ajuda mais do que só mudar o algoritmo.
+
+==============================================================================================================================================================================
+
+2) Valores Ausentes
+
+a) Dá pra tratar esses valores faltando de várias formas: preencher com a média ou mediana, criar uma categoria pra “não informado”, tentar prever os valores faltantes com outro modelo, ou usar algoritmos que aceitam dados faltando.
+
+b) Remover registros não é legal quando tem muitos dados faltando, porque aí a gente perde muita informação e o conjunto fica pequeno demais. Também não deve fazer isso se os dados ausentes forem importantes ou não acontecerem aleatoriamente.
+
+==============================================================================================================================================================================
+
+3) Normalização vs Padronização
+
+Normalização (Min-Max) faz os dados ficarem entre 0 e 1, ajustando tudo pra uma mesma escala.
+
+Padronização (Z-score) deixa os dados com média zero e desvio padrão 1, ou seja, “centraliza” eles.
+
+Normalização é melhor pra algoritmos que usam distância, como KNN e clustering, porque assim todas as variáveis têm peso parecido. Já a padronização é melhor pra modelos que assumem que os dados seguem uma distribuição normal, tipo regressão e redes neurais, porque ajuda o modelo a aprender melhor.
+
+==============================================================================================================================================================================
+
+4) Dados Categóricos
+
+a) Pra usar no modelo, a gente transforma a variável em várias colunas com 0 e 1, tipo “sol”, “chuva” e “nublado” em colunas separadas (one-hot encoding).
+
+b) Se só colocar números tipo 0,1,2, o modelo pode achar que “2” é maior que “1”, e isso pode confundir, porque “nublado” não é maior que “chuva”, por exemplo.
+
+==============================================================================================================================================================================
+
+5) Overfitting e Separação de Dados
+
+A gente divide os dados em treino pra ensinar o modelo, validação pra testar e ajustar o modelo sem “viciar”, e teste pra ver como o modelo vai funcionar de verdade.
+
+Se usar os dados de teste pra treinar, o modelo já conhece eles e o resultado fica falso, porque ele “decorou” e não aprendeu a generalizar.
+
+==============================================================================================================================================================================
+
+6) Balanceamento de Classes
+
+a) Se uma classe tiver quase tudo, o modelo pode acabar só aprendendo a reconhecer essa classe maior e ignorar a menor, dando resultado ruim pra ela.
+
+b) Pra arrumar isso, pode fazer oversampling (aumentar os dados da classe menor), undersampling (diminuir os dados da maior) ou usar métodos que criam dados sintéticos, como SMOTE.
+
+==============================================================================================================================================================================
+
+7) Detecção de Outliers
+
+a) Outliers são dados que estão muito longe dos outros, tipo valores muito altos ou muito baixos que não fazem sentido.
+
+b) Tirar eles pode ser ruim se esses dados forem importantes, por exemplo, um cliente com comportamento diferente que a gente precisa entender.
+
+c) Um jeito simples de detectar é usar o intervalo interquartil (IQR), que acha os dados que estão muito longe da maioria.
+
+==============================================================================================================================================================================
+
+8) Feature Engineering
+
+Usar a idade ao invés da data de nascimento é melhor porque a idade é um número que mostra direto a fase da vida da pessoa, já a data não ajuda tanto e é mais difícil pro modelo entender.
+
+==============================================================================================================================================================================
+
+9) Pipeline de Pré-processamento
+
+Um pipeline completo seria:
+
+Tratar os dados que estão faltando (preencher ou criar categoria “desconhecido”);
+
+Transformar as variáveis categóricas com one-hot;
+
+Normalizar ou padronizar as variáveis numéricas pra elas ficarem na mesma escala;
+
+Tratar o desbalanceamento de classes com oversampling ou outras técnicas;
+
+Depois dividir o dataset em treino, validação e teste.
+
+==============================================================================================================================================================================
+
+Preparação do dataset para prever aprovação em crédito bancário
+
+Analisar os dados
+
+Verificar se existem dados faltando em cada variável.
+
+Confirmar o tipo de cada variável (numérica ou categórica).
+
+Tratar valores ausentes
+
+Para variáveis numéricas como renda_mensal, idade e número_de_dependentes, preencher os valores faltantes com a mediana.
+
+Para variáveis categóricas como estado_civil e histórico_de_inadimplência, preencher com a categoria mais frequente ou criar uma categoria “desconhecido”.
+
+Codificar variáveis categóricas
+
+Transformar estado_civil e histórico_de_inadimplência em variáveis dummy (one-hot encoding) para que o modelo entenda as categorias sem criar uma ordem falsa.
+
+Ajustar variáveis numéricas
+
+Garantir que idade esteja em número inteiro (se estiver como data de nascimento, calcular a idade).
+
+Avaliar se o número_de_dependentes deve ser agrupado em categorias para evitar ruído (exemplo: “3 ou mais”).
+
+Normalizar ou padronizar variáveis numéricas
+
+Aplicar normalização ou padronização nas variáveis renda_mensal, idade e número_de_dependentes para que todas tenham a mesma escala e evitar que uma influencie demais o modelo.
+
+Detectar e tratar outliers
+
+Identificar valores muito altos ou baixos em renda_mensal ou idade que possam prejudicar o modelo.
+
+Remover ou corrigir esses outliers, se necessário.
+
+Balancear classes
+
+Verificar se a aprovação e reprovação estão equilibradas.
+
+Se houver desequilíbrio, usar técnicas como oversampling, undersampling ou SMOTE para balancear.
+
+Dividir os dados
+
+Separar o dataset em treino, validação e teste para garantir uma avaliação correta do modelo e evitar overfitting.
+
+Revisão final
+
+Checar dados duplicados e inconsistentes.
+
+Salvar o dataset preparado para o treinamento.

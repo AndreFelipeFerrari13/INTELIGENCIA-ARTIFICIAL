@@ -1,0 +1,21 @@
+Exemplo — Recomendação de Filmes e Séries NEFTLIX 
+
+Software + problema:
+Netflix precisa ajudar o usuário a escolher o que assistir em um catálogo muito grande.
+
+IA (funcionalidade):
+Recomendar conteúdos personalizados.
+Entrada: histórico de visualização, avaliações, tempo assistido, gênero preferido.
+Saída: (1) lista de filmes/séries recomendados, (2) ranking personalizado na tela inicial.
+
+Técnica provável:
+Sistemas de recomendação (filtragem colaborativa + modelos baseados em conteúdo).
+
+Métrica de sucesso:
+Tempo assistido e taxa de cliques nas recomendações.
+Negócio: aumento do engajamento e retenção de usuários.
+
+
+
+
+
