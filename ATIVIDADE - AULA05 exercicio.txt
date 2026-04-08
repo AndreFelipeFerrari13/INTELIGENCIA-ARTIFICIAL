@@ -1,0 +1,140 @@
+EXERCÍCIO – ALGORITMO ID3 (LENTES DE CONTATO)
+
+(a) Escolha do atributo raiz
+
+Distribuição das classes no conjunto total (15 exemplos):
+
+* nenhuma = 5
+* gelatinosas = 6
+* dura = 4
+
+Cálculo da entropia do conjunto S:
+
+H(S) = - [ (5/15)log2(5/15) + (6/15)log2(6/15) + (4/15)log2(4/15) ]
+
+H(S) ≈ - [ 0,33(-1,585) + 0,4(-1,322) + 0,27(-1,889) ]
+H(S) ≈ 1,56
+
+
+
+Atributo: Taxa lacrimal
+
+Valores: reduzida (7), normal (8)
+
+Subconjunto reduzida:
+
+* nenhuma = 4
+* gelatinosas = 3
+* dura = 0
+
+H(reduzida) ≈ 0,985
+
+Subconjunto normal:
+
+* nenhuma = 1
+* gelatinosas = 3
+* dura = 4
+
+H(normal) ≈ 1,406
+
+Entropia ponderada:
+H = (7/15)*0,985 + (8/15)*1,406 ≈ 1,21
+
+Ganho:
+Gain = 1,56 - 1,21 = 0,35
+
+
+
+Atributo: Astigmatismo
+
+Valores: não (8), sim (7)
+
+H(não) ≈ 1,30
+H(sim) ≈ 1,45
+
+Entropia ponderada:
+H ≈ 1,37
+
+Ganho:
+Gain ≈ 1,56 - 1,37 = 0,19
+
+
+
+Atributo: Diagnóstico
+
+Valores: miopia (8), hipermetropia (7)
+
+H(miopia) ≈ 1,41
+H(hipermetropia) ≈ 1,56
+
+Entropia ponderada:
+H ≈ 1,48
+
+Ganho:
+Gain ≈ 0,08
+
+
+
+Atributo: Idade
+
+Ganho aproximado:
+Gain ≈ 0,02
+
+
+
+Conclusão (a):
+
+O maior ganho de informação é do atributo Taxa lacrimal (0,35).
+
+Logo, ele é escolhido como raiz da árvore.
+
+==================================================
+
+(b) Ramo: Taxa lacrimal = reduzida
+
+Subconjunto com 7 exemplos:
+
+* nenhuma = 4
+* gelatinosas = 3
+* dura = 0
+
+Entropia:
+H ≈ 0,985
+
+
+Atributo: Astigmatismo
+
+não (4): nenhuma = 2, gel = 2 → H = 1
+sim (3): nenhuma = 2, gel = 1 → H ≈ 0,918
+
+Entropia ponderada:
+H ≈ 0,964
+
+Ganho:
+Gain ≈ 0,021
+
+
+
+Atributo: Diagnóstico
+
+miopia (4): nenhuma = 3, gel = 1 → H ≈ 0,811
+hipermetropia (3): nenhuma = 1, gel = 2 → H ≈ 0,918
+
+Entropia ponderada:
+H ≈ 0,857
+
+Ganho:
+Gain ≈ 0,128
+
+
+Atributo: Idade
+
+Ganho aproximado:
+Gain ≈ 0,02
+
+
+Conclusão (b):
+
+O atributo com maior ganho é Diagnóstico (0,128).
+
+Portanto, no ramo Taxa lacrimal = reduzida, o próximo nó é Diagnóstico.
